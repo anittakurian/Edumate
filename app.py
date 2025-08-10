@@ -6,7 +6,7 @@ import os
 import re
 from dotenv import load_dotenv
 
-# -------------------- Load API Key --------------------
+# Load API Key 
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
@@ -18,7 +18,7 @@ else:
 summary_model = genai.GenerativeModel('models/gemini-1.5-flash')
 flashcard_model = genai.GenerativeModel('models/gemini-1.5-flash')
 
-# -------------------- Utility Functions --------------------
+# Utility Functions 
 def extract_text_from_pdf(uploaded_file):
     reader = PyPDF2.PdfReader(uploaded_file)
     return "\n".join([page.extract_text() or "" for page in reader.pages])
@@ -99,7 +99,7 @@ def _generate_flashcards_and_reset_quiz(extracted_text):
     else:
         st.warning("No text extracted from PDF.")
 
-# -------------------- Streamlit UI --------------------
+#  Streamlit UI 
 st.set_page_config(page_title="EduMate - AI Summarizer & Quiz", layout="centered")
 st.title("EduMate - AI Summarization Assistant & Quiz")
 st.markdown("Powered by Google Gemini (Free Tier)")
